@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>DataTables example - HTML (DOM) sourced data</title>
+	<link rel="shortcut icon" type="image/png" href="/media/images/favicon.png">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+	<link rel="stylesheet" type="text/css" href="/media/css/site-examples.css?_=94461d89946ef749b7a43d14685c725d1">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href=" https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js">
+
+	<style type="text/css" class="init">
+
+	</style>
+	<script type="text/javascript" src="/media/js/site.js?_=0c32e5cdbe9b575086edb0b907646184"></script>
+	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=examples%2Fdata_sources%2Fdom.html" async></script>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/demo.js"></script>
+	<script type="text/javascript" class="init">
+
+
+$(document).ready(function() {
+    var table = $('#example').DataTable( {
+        "scrollX": true,
+
+    } );
+
+    new $.fn.dataTable.FixedHeader( table );
+} );
+$(document).ready(function() {
+    var table = $('#example1').DataTable( {
+        "scrollX": true
+    } );
+
+    new $.fn.dataTable.FixedHeader( table );
+} );
+
+	</script>
+</head>
+
+
+<div class="shadow p-3 mb-5 bg-white rounded">
+<div class="card-header bi-text-left" style="background-color: #E6E5E4; color: midnightblue;"><h4>EQUIPOS RECIBIDOS</h4>
+    <div class="card-header bi-text-right" style="background-color: midnightblue; color: #E6E5E4;">
+        <h5>Suma Total: {{sumD}}</h5>
+    </div>
+    <br>
+    <form action="{{ url_for('info') }}" method="POST">
+    <div class="row">
+        <div class="col">
+            <span> fecha inicio
+            <input type="date"name="startdate">
+            </span>
+        </div>
+        <div class="col">
+            <span> fecha fin
+            <input type="date" name="enddate">
+            </span>
+        </div>
+        <br>
+        <div class="row">
+            <input class="btn btn-secondary btn-sm" type="submit">
+        </div>
+
+    </div>
+</br>
+    </form>
+
+</div>
+    <table id="example1" class="table table-hover table-bordered" style="width: 100%;">
+    <thead>
+        <tr class="text-center" style="background-color: #F0F0F0; color: midnightblue;">
+            <th scope="col">Usuario</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Fin</th>
+            <th scope="col">Fecha de Entrega</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Equipo</th>
+            <th scope="col">Multa</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% if not busqueda%}
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        {% endif %}
+        {% for b in busqueda%}
+            <tr>
+                <th scope="col">{{b.borrow_person}}</th>
+                <th scope="col">{{b.borrow_start}}</th>
+                <th scope="col">{{b.borrow_end}}</th>
+                <th scope="col">{{b.borrow_delivery}}</th>
+                <th scope="col">{{b.borrow_state}}</th>
+                <th scope="col">{{equipos[b.borrow_equipment]}}</th>
+                <th scope="col">{{b.multa}}</th>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+<br>
+
+<div class="shadow p-3 mb-5 bg-white rounded">
+    <div class="card-header bi-text-left" style="background-color: #E6E5E4; color: midnightblue;"><h4>EQUIPOS NO ENTREGADOS</h4>
+        <div class="card-header bi-text-right" style="background-color: midnightblue; color: #E6E5E4;">
+            <h5>Suma Total Pendiente Pago: {{sumN}}</h5>
+        </div>
+    </div>
+
+    <table id="example" class="table table-hover table-bordered" style="width: 100%;">
+        <thead>
+            <tr class="text-center" style="background-color: #F0F0F0; color: midnightblue;">
+                <th scope="col">Usuario</th>
+                <th scope="col">Inicio</th>
+                <th scope="col">Fin</th>
+                <th scope="col">Fecha de Entrega</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Multa Actual</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% if not busquedaA%}
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+                {% endif %}
+                {% for b in busquedaA%}
+                <tr>
+                    <th scope="col">{{b.borrow_person}}</th>
+                    <th scope="col">{{b.borrow_start}}</th>
+                    <th scope="col">{{b.borrow_end}}</th>
+                    <th scope="col">{{b.borrow_delivery}}</th>
+                    <th scope="col">{{b.borrow_state}}</th>
+                    <th scope="col">{{equipos[b.borrow_equipment]}}</th>
+                    <th scope="col">{{b.multa}}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+
