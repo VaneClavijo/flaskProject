@@ -71,17 +71,7 @@ traitlets==5.0.5
 traittypes==0.2.1
 tzdata==2021.5
 unicodecsv==0.14.1
-uritemplate==3.0.1
-urllib3==1.26.7
-visitor==0.1.3
-voila==0.3.1
-wcwidth==0.2.5
-webencodings==0.5.1
 websockets==10.1
-whitebox==2.0.3
-whiteboxgui==0.6.0
-win-unicode-console==0.5
-wincertstore==0.2
 WTForms==3.0.1
 xlwt==1.3.0
 
