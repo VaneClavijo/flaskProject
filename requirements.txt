@@ -1,19 +1,6 @@
 anaconda-navigator==2.1.1
 appdirs==1.4.4
 argh==0.26.2
-arrow @ file:///C:/ci/arrow_1617738834352/work
-dnspython==2.2.0
-docutils @ file:///C:/ci/docutils_1620828264669/work
-dominate==2.6.0
-earthengine-api==0.1.296
-ee-extra==0.0.10
-entrypoints==0.3
-et-xmlfile==1.1.0
-eureka-client==0.6.2
-fastcache @ file:///C:/ci/fastcache_1607571310570/work
-ffmpeg-python==0.2.0
-filelock @ file:///tmp/build/80754af9/filelock_1635402558181/work
-flake8 @ file:///tmp/build/80754af9/flake8_1620776156532/work
 Flask @ file:///home/ktietz/src/ci/flask_1611932660458/work
 Flask-Bootstrap==3.3.7.1
 flask-eureka==0.1.0
