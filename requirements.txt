@@ -1,7 +1,6 @@
 anaconda-navigator==2.1.1
 appdirs==1.4.4
 argh==0.26.2
-Flask @ file:///home/ktietz/src/ci/flask_1611932660458/work
 Flask-Bootstrap==3.3.7.1
 flask-eureka==0.1.0
 Flask-JWT-Extended==4.3.1
@@ -11,14 +10,7 @@ Flask-SQLAlchemy==2.5.1
 Flask-WTF==1.0.0
 folium==0.12.1.post1
 fonttools==4.25.0
-fsspec @ file:///tmp/build/80754af9/fsspec_1636116461911/work
-future @ file:///C:/ci/future_1607568713721/work
 geeadd==0.5.5
-geemap==0.11.1
-geocoder==1.38.1
-geojson==2.5.0
-gevent @ file:///C:/ci/gevent_1628273776273/work
-glob2 @ file:///home/linux1/recipes/ci/glob2_1610991677669/work
 google-api-core==2.4.0
 google-api-python-client==1.12.10
 google-auth==2.6.0
