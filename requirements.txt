@@ -84,7 +84,6 @@ ratelim==0.1.6
 rsa==4.8
 sankee==0.0.7
 scikit-image==0.18.3
-scikit-learn-intelex==2021.20210714.120553
 simplegeneric==0.8.1
 sip==4.19.13
 Sphinx==4.2.0
